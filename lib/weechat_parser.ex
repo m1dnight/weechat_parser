@@ -246,6 +246,10 @@ defmodule WeechatParser do
 
   # ----------------------------------------------------------------------------
 
+  defp reduce_log_entry([datetime, line]) do
+    Map.put(line, :timestamp, datetime)
+  end
+
   defparsec :log_entry,
             parsec(:datetime)
             |> parsec(:ignore_tab)
@@ -257,6 +261,7 @@ defmodule WeechatParser do
               parsec(:action_line)
             ])
             |> parsec(:ignore_newline)
+            |> reduce(:reduce_log_entry)
             |> label("log_entry")
 
   defparsec :parse_file,
@@ -272,7 +277,7 @@ defmodule WeechatParser do
   defp unwrap({:ok, [], "", _, _, _}), do: {:ignored, "empty input"}
   defp unwrap({:ok, _, rest, _, _, _}), do: {:error, "could not parse ruleset" <> rest}
 
-  defp unwrap({:error, reason, rest, _, {line, char}, _}),
+  defp unwrap({:error, _reason, _rest, _, {line, char}, _}),
     do: {:error, :failed, line: line, char: char}
 
   ##############################################################################

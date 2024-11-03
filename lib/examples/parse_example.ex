@@ -10,7 +10,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :join}], _, _, _, _} ->
+        {:ok, [%{type: :join}], _, _, _, _} ->
           []
 
         _ ->
@@ -26,7 +26,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :kick}], _, _, _, _} ->
+        {:ok, [%{type: :kick}], _, _, _, _} ->
           []
 
         _ ->
@@ -42,7 +42,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :leave}], _, _, _, _} ->
+        {:ok, [%{type: :leave}], _, _, _, _} ->
           []
 
         _ ->
@@ -58,7 +58,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :nick_change}], _, _, _, _} ->
+        {:ok, [%{type: :nick_change}], _, _, _, _} ->
           []
 
         _ ->
@@ -74,7 +74,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :quit}], _, _, _, _} ->
+        {:ok, [%{type: :quit}], _, _, _, _} ->
           []
 
         _ ->
@@ -90,7 +90,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :action}], _, _, _, _} ->
+        {:ok, [%{type: :action}], _, _, _, _} ->
           []
 
         _ ->
@@ -106,7 +106,7 @@ defmodule WeechatParser.Examples do
     |> Enum.into([])
     |> Enum.flat_map(fn {line, res} ->
       case res do
-        {:ok, [_, %{type: :message}], _, _, _, _} ->
+        {:ok, [%{type: :message}], _, _, _, _} ->
           []
 
         _ ->
