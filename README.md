@@ -1,6 +1,36 @@
 # WeechatParser
 
-**TODO: Add description**
+A parser for Weechat log files. 
+
+To parse a file, simply run the following.
+
+```elixir 
+File.read!("test/test_logs/irc.libera.\#elixir.weechatlog") 
+|> WeechatParser.try_parse_log
+```
+
+The result is a list of maps containing the messages. 
+
+```elixir
+{:ok,
+ [
+   ~N[2022-02-21 16:18:04],
+   %{
+     type: :join,
+     host: "~zorro@1-1-1-1.foo.bar.be",
+     nick: "m1dnight",
+     channel: "elixir"
+   },
+   ~N[2022-03-03 11:57:54],
+   %{
+     message: "Does anyone have some pointers to manually writing an erlang history file?",
+     type: :message,
+     from: "m1dnight"
+   }
+ ]}
+```
+
+To pars
 
 ## Installation
 
